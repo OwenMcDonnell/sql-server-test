@@ -4,11 +4,10 @@ environment:
 
 test_script:
 - ps: Start-Service "MSSQL`$$env:SQL_INSTANCE_NAME"
-
+- ps: $env:connection_string_with_instance = "Server=(local)\$env:SQL_INSTANCE_NAME;Database=MyDatabase_test;User ID=sa;Password=Password12!"
 - ps: |
-      $connectionString = "Server=(local)\$env:SQL_INSTANCE_NAME;Database=MyDatabase_test;User ID=sa;Password=Password12!"
       $conn = New-Object System.Data.SqlClient.SqlConnection
-      $conn.ConnectionString = $env:TEST_CONNECTION_STRING
+      $conn.ConnectionString = $env:connection_string_with_instance
       $conn.Open()
       $cmd = New-Object System.Data.SqlClient.SqlCommand("SELECT * FROM information_schema.tables", $conn)
       $reader = $cmd.ExecuteReader()
