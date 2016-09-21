@@ -6,6 +6,8 @@ environment:
   - SQL_INSTANCE_NAME: SQL2016
 
 test_script:
+- $ErrorActionPreference = "Stop"
+
 - 'echo Starting SQL Server instance: %SQL_INSTANCE_NAME%'
 - ps: Start-Service "MSSQL`$$env:SQL_INSTANCE_NAME"
 
