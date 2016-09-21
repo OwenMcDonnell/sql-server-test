@@ -3,7 +3,7 @@ environment:
   - SQL_INSTANCE_NAME: SQL2008R2SP2
 
 test_script:
-- echo Starting SQL Server instance: %SQL_INSTANCE_NAME%
+- 'echo Starting SQL Server instance: %SQL_INSTANCE_NAME%'
 - ps: Start-Service "MSSQL`$$env:SQL_INSTANCE_NAME"
 
 - echo Testing connectivity with named instance over named pipes
