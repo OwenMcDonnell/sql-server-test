@@ -1,0 +1,21 @@
+environment:
+  matrix:
+  - SQL_INSTANCE_NAME: SQL2008R2SP2
+
+test_script:
+- ps: Start-Service "MSSQL`$$env:SQL_INSTANCE_NAME"
+
+- ps: |
+      $connectionString = "Server=(local)\$env:SQL_INSTANCE_NAME;Database=MyDatabase_test;User ID=sa;Password=Password12!"
+      $conn = New-Object System.Data.SqlClient.SqlConnection
+      $conn.ConnectionString = $env:TEST_CONNECTION_STRING
+      $conn.Open()
+      $cmd = New-Object System.Data.SqlClient.SqlCommand("SELECT * FROM information_schema.tables", $conn)
+      $reader = $cmd.ExecuteReader()
+      while($reader.Read())
+      {
+        Write-Host "Table: $($reader["table_name"])"
+      }
+      $conn.Close()
+
+build: off
