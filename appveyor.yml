@@ -3,8 +3,11 @@ environment:
   - SQL_INSTANCE_NAME: SQL2008R2SP2
 
 test_script:
+- echo Starting SQL Server instance: %SQL_INSTANCE_NAME%
 - ps: Start-Service "MSSQL`$$env:SQL_INSTANCE_NAME"
-- ps: $env:connection_string_with_instance = "Server=(local)\$env:SQL_INSTANCE_NAME;Database=MyDatabase_test;User ID=sa;Password=Password12!"
+
+- echo Testing connectivity with named instance over named pipes
+- ps: $env:connection_string_with_instance = "Server=(local)\$env:SQL_INSTANCE_NAME;Database=master;User ID=sa;Password=Password12!"
 - ps: |
       $conn = New-Object System.Data.SqlClient.SqlConnection
       $conn.ConnectionString = $env:connection_string_with_instance
