@@ -1,3 +1,5 @@
+max_jobs: 2
+
 environment:
   matrix:
   - SQL_INSTANCE_NAME: SQL2008R2SP2
