@@ -6,6 +6,7 @@ environment:
   - SQL_INSTANCE_NAME: SQL2012SP1
   - SQL_INSTANCE_NAME: SQL2014
   - SQL_INSTANCE_NAME: SQL2016
+  - SQL_INSTANCE_NAME: SQL2017
 
 test_script:
 - ps: $ErrorActionPreference = "Stop"
