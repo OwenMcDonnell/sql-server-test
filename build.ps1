@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 $env:isVs2017 = 'false'
 if (test-path "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community") { $env:isVs2017 = 'true' }
-if ($env:isVs2017 -eq 'true' -and ($env:SQL_INSTANCE_NAME -eq 'SQL2008R2SP2' -or $env:SQL_INSTANCE_NAME -eq 'SQL2012SP1')) { Exit-AppveyorBuild }
+if ($env:isVs2017 -eq 'true' -and ($env:SQL_INSTANCE_NAME -eq 'SQL2008R2SP2' -or $env:SQL_INSTANCE_NAME -eq 'SQL2012SP1')) { return }
 echo 'Starting SQL Server instance: '
 $env:SQL_INSTANCE_NAME
 Start-Service "MSSQL`$$env:SQL_INSTANCE_NAME"
