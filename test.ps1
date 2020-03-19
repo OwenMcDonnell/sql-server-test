@@ -37,8 +37,7 @@ if (test-path "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community") {
   $SQL_INSTANCES = @('SQL2014', 'SQL2016', 'SQL2017')
 }
 
-if ((test-path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community")
-  -or (test-path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview")) {
+if ((test-path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community") -or (test-path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview")) {
   $SQL_INSTANCES = @('SQL2017', 'SQL2019')
 }
 
