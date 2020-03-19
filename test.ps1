@@ -42,5 +42,5 @@ if ((test-path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community") 
 }
 
 foreach($SQL_INSTANCE_NAME in $SQL_INSTANCES) {
-  TestSqlServerInstance $SQL_INSTANCES
+  TestSqlServerInstance $SQL_INSTANCE_NAME
 }
