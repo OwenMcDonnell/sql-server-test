@@ -4,9 +4,7 @@ $SQL_INSTANCE_NAME = $env:SQL_INSTANCE_NAME
 
 Write-Host "Starting SQL Server instance: $SQL_INSTANCE_NAME" -ForegroundColor Cyan
 Start-Service "MSSQL`$$SQL_INSTANCE_NAME"
-Write-Host "Service started"
-cmd /c sqlcmd -?
-cmd /c sqlcmd -S localhost -U SA -P Password12! -Q "select @@VERSION"
+#cmd /c sqlcmd -S localhost -U SA -P Password12! -Q "select @@VERSION"
 Write-Host 'Testing connectivity with named instance over named pipes'
 $env:connection_string_with_instance = "Server=(local)\$SQL_INSTANCE_NAME;Database=master;User ID=sa;Password=Password12!"
 $conn = New-Object System.Data.SqlClient.SqlConnection
