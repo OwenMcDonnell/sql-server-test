@@ -1,5 +1,8 @@
 test_script:
 - ps: .\test.ps1
+init:
+- ps: [Environment]::SetEnvironmentVariable("Path", $newPath + ";C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\180\SDK\", "machine")
+- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 build: off
 
