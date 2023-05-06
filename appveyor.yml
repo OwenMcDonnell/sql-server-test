@@ -1,6 +1,9 @@
 test_script:
 - ps: .\test.ps1
 init:
+  - ps: |
+      $newPath = ($env:PATH.split(';') | ? {$_ -notmatch "C:\\Program Files\\SQL Server\\tools\\ODBC\\1[37]0\\"} ) -join ';'
+      [Environment]::SetEnvironmentVariable("Path", $test + ";C:\Program Files\SQL Server\tools\ODBC\180\\", "machine")
   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 build: off
 
