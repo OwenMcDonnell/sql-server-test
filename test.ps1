@@ -2,8 +2,6 @@ $ErrorActionPreference = "Stop"
 
 $SQL_INSTANCE_NAME = $env:SQL_INSTANCE_NAME
 
-set-itemproperty -path 'HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL16.SQL2022\MSSQLServer\SuperSocketNetLib\Tcp\IPAll' -name tcpport -value 1433
-
 Write-Host "Starting SQL Server instance: $SQL_INSTANCE_NAME" -ForegroundColor Cyan
 Start-Service "MSSQL`$$SQL_INSTANCE_NAME"
 Write-Host 'Service started...'
