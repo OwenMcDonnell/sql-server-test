@@ -1,5 +1,4 @@
 $ErrorActionPreference = "Stop"
-Install-Module SqlServer
 
 $SQL_INSTANCE_NAME = $env:SQL_INSTANCE_NAME
 
@@ -7,7 +6,7 @@ Write-Host "Starting SQL Server instance: $SQL_INSTANCE_NAME" -ForegroundColor C
 Start-Service "MSSQL`$$SQL_INSTANCE_NAME"
 Write-Host 'Service started...'
 
-Get-SqlInstance -ServerInstance "Server(local)\$SQL_INSTANCE_NAME" | Set-SqlNetworkConfiguration -Protocol TCP -Port 1433 -ForceServiceRestart -AcceptSelfSignedCertificate
+Get-SqlInstance -ServerInstance "$env:computername\$SQL_INSTANCE_NAME" | Set-SqlNetworkConfiguration -Protocol TCP -Port 1433 -ForceServiceRestart -AcceptSelfSignedCertificate
 
 #Get-Service | Where {$_.status -eq 'running' -and $_.DisplayName -match "sql server*"}
 cmd /c sqlcmd -S localhost -U SA -P Password12! -Q "select @@VERSION"
