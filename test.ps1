@@ -5,7 +5,7 @@ $SQL_INSTANCE_NAME = $env:SQL_INSTANCE_NAME
 Write-Host "Starting SQL Server instance: $SQL_INSTANCE_NAME" -ForegroundColor Cyan
 Start-Service "MSSQL`$$SQL_INSTANCE_NAME"
 Write-Host 'Service started...'
-
+Write-Host "$env:computername\$SQL_INSTANCE_NAME"
 Get-SqlInstance -ServerInstance "$env:computername\$SQL_INSTANCE_NAME" | Set-SqlNetworkConfiguration -Protocol TCP -Port 1433 -ForceServiceRestart -AcceptSelfSignedCertificate
 
 #Get-Service | Where {$_.status -eq 'running' -and $_.DisplayName -match "sql server*"}
