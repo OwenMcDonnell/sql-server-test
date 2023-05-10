@@ -1,5 +1,5 @@
 $ErrorActionPreference = "Stop"
-
+Update-Module -name "sqlserver"
 $SQL_INSTANCE_NAME = $env:SQL_INSTANCE_NAME
 
 Write-Host "Starting SQL Server instance: $SQL_INSTANCE_NAME" -ForegroundColor Cyan
