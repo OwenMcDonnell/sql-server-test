@@ -3,6 +3,7 @@ test_script:
 init:
   #- ps: |
    #   [Environment]::SetEnvironmentVariable("Path", "C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\180\SDK\Lib\x64\;" + $env:PATH, "machine")
+  - ps: set-itemproperty -path 'HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL16.SQL2022\MSSQLServer\SuperSocketNetLib\Tcp\IPAll' -name tcpport -value 1433
   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 build: off
