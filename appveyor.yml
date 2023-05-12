@@ -1,7 +1,7 @@
 test_script:
 - ps: .\test.ps1
-init:
-  - ps: set-itemproperty -path 'HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL16.SQL2022\MSSQLServer\SuperSocketNetLib\Tcp\IPAll' -name tcpport -value 1433
+#init:
+ # - ps: set-itemproperty -path 'HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL16.SQL2022\MSSQLServer\SuperSocketNetLib\Tcp\IPAll' -name tcpport -value 1433
 
 
 build: off
